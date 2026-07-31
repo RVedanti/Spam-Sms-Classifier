@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --bg: #0B1120;
+    --surface: #131B2E;
+    --surface-raised: #17213A;
+    --border: #22304A;
+    --cyan: #22D3EE;
+    --cyan-dim: rgba(34, 211, 238, 0.12);
+    --danger: #F87171;
+    --danger-bg: rgba(248, 113, 113, 0.10);
+    --danger-border: rgba(248, 113, 113, 0.35);
+    --success: #34D399;
+    --success-bg: rgba(52, 211, 153, 0.10);
+    --success-border: rgba(52, 211, 153, 0.35);
+    --text: #E2E8F0;
+    --text-muted: #8DA0BD;
+}
+
+/* ------------------------------
+   Base
+------------------------------ */
+
+html, body, .stApp {
+    background: var(--bg) !important;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+.main {
+    padding-top: 1rem;
+}
+
+.block-container {
+    padding-top: 2.5rem !important;
+    padding-bottom: 3rem;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ------------------------------
+   Headings / display type
+------------------------------ */
+
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    color: var(--text) !important;
+    font-weight: 700 !important;
+}
+
+h2, h3 {
+    color: var(--text) !important;
+    font-weight: 600 !important;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ------------------------------
+   Signature: pulsing scan glow on logo
+------------------------------ */
+
+@keyframes scanpulse {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.35)); }
+    50%      { filter: drop-shadow(0 0 18px rgba(34, 211, 238, 0.65)); }
+}
+
+/* Only style the header logo */
+/* Main page logo only */
+
+div[data-testid="stHorizontalBlock"] div[data-testid="column"]:nth-child(2) [data-testid="stImage"]{
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+    margin-bottom:20px;
+}
+
+div[data-testid="stHorizontalBlock"] div[data-testid="column"]:nth-child(2) [data-testid="stImage"] img{
+    border-radius:16px;
+    background:white;
+    padding:10px;
+    box-shadow:0 4px 14px rgba(0,0,0,.4);
+    animation:scanpulse 3s ease-in-out infinite;
+}
+/* Streamlit wraps images in containers that clip overflow by default,
+   which cuts off the glow (and top edge of the image). Let it breathe. */
+[data-testid="stImage"],
+[data-testid="stImageContainer"],
+div:has(> [data-testid="stImage"]) {
+    overflow: visible !important;
+}
+
+[data-testid="stImage"] img {
+    overflow: visible !important;
+}
+
+div[data-testid="column"] {
+    overflow: visible !important;
+}
+
+div[data-testid="stHorizontalBlock"] {
+    overflow: visible !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main img {
+        animation: none;
+        filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.4));
+    }
+}
+
+/* ------------------------------
+   Sidebar
+------------------------------ */
+
+/* ------------------------------
+   Sidebar
+------------------------------ */
+
+section[data-testid="stSidebar"] {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+/* Center the Streamlit image container */
+section[data-testid="stSidebar"] [data-testid="stImage"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 18px auto 20px auto;
+    width: 100%;
+}
+
+/* Style the logo */
+section[data-testid="stSidebar"] [data-testid="stImage"] img {
+    width: 120px !important;
+    display: block;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.35);
+}
+
+section[data-testid="stSidebar"] h1 {
+    text-align: center;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cyan) !important;
+}
+
+section[data-testid="stSidebar"] h3 {
+    color: var(--cyan) !important;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 1.2rem;
+}
+
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ------------------------------
+   Text input
+------------------------------ */
+
+label {
+    color: var(--text-muted) !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+textarea {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    color: var(--text) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.95rem !important;
+}
+
+textarea:focus {
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 0 1px var(--cyan) !important;
+}
+
+textarea::placeholder {
+    color: #5B6B85 !important;
+}
+
+/* ------------------------------
+   Buttons
+------------------------------ */
+
+.stButton>button {
+    width: 100%;
+    background: var(--cyan);
+    color: #06222B;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: 0.2s;
+}
+
+.stButton>button:hover {
+    background: #67E4F8;
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+.stButton>button:active {
+    transform: translateY(0);
+}
+
+/* ------------------------------
+   Verdict card (signature result element)
+------------------------------ */
+
+.verdict-card {
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    margin: 1rem 0 1.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.verdict-card.spam {
+    background: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+}
+
+.verdict-card.safe {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+}
+
+.verdict-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.verdict-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.verdict-card.spam .verdict-title { color: var(--danger); }
+.verdict-card.safe .verdict-title { color: var(--success); }
+
+.verdict-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.15rem;
+}
+
+.verdict-badges {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-raised);
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* ------------------------------
+   Progress bar
+------------------------------ */
+
+div[data-testid="stProgress"] > div > div {
+    background: linear-gradient(90deg, var(--cyan), var(--danger));
+}
+
+div[data-testid="stProgress"] {
+    background: var(--surface);
+    border-radius: 999px;
+}
+
+/* ------------------------------
+   Reasons list
+------------------------------ */
+
+.reason-list {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.reason-list div {
+    padding: 0.25rem 0;
+}
+
+/* ------------------------------
+   History
+------------------------------ */
+
+.history-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.history-row:last-child {
+    border-bottom: none;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dot.spam { background: var(--danger); }
+.dot.safe { background: var(--success); }
+
+/* ------------------------------
+   Sample message cards
+------------------------------ */
+
+.sample-card {
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    height: 100%;
+}
+
+.sample-card.spam {
+    background: var(--danger-bg);
+    border-left: 3px solid var(--danger);
+}
+
+.sample-card.safe {
+    background: var(--success-bg);
+    border-left: 3px solid var(--success);
+}
+
+.sample-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.sample-card.spam .sample-label { color: var(--danger); }
+.sample-card.safe .sample-label { color: var(--success); }
+
+.sample-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ------------------------------
+   Dividers
+------------------------------ */
+
+hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 1.75rem 0;
+}
+
+/* ------------------------------
+   Footer / caption
+------------------------------ */
+
+footer {
+    visibility: hidden;
+}
+
+.stCaption, [data-testid="stCaptionContainer"] {
+    color: var(--text-muted) !important;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.78rem !important;
+}
+
+/* ------------------------------
+   Alerts (warning)
+------------------------------ */
+
+div[data-baseweb="notification"] {
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+}
