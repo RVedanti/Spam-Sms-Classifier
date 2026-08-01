@@ -18,16 +18,14 @@
   <img src="screenshots/home.png" width="900">
 </p>
 
-### 🚨 Spam Detection
-
-<p align="center">
-  <img src="screenshots/spam_result.png" width="900">
-</p>
-
 ### ✅ Legitimate Message Detection
 
 <p align="center">
-  <img src="screenshots/safe_result.png" width="900">
+  <img src="screenshots/img1.png" width="900">
+</p>
+
+<p align="center">
+  <img src="screenshots/img2.png" width="900">
 </p>
 
 ---
