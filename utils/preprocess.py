@@ -22,3 +22,24 @@ except LookupError:
 ps = PorterStemmer()
 
 STOP_WORDS = set(stopwords.words("english"))
+
+
+def transform_text(text):
+
+    text = text.lower()
+
+    text = nltk.word_tokenize(text)
+
+    words = []
+
+    for word in text:
+        if word.isalnum():
+            words.append(word)
+
+    filtered = []
+
+    for word in words:
+        if word not in STOP_WORDS and word not in string.punctuation:
+            filtered.append(ps.stem(word))
+
+    return " ".join(filtered)
