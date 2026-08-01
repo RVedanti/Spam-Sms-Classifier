@@ -12,13 +12,7 @@
 
 ## 📸 Application Preview
 
-### 🏠 Home Page
-
-<p align="center">
-  <img src="screenshots/home.png" width="900">
-</p>
-
-### ✅ Legitimate Message Detection
+### Message Detection
 
 <p align="center">
   <img src="screenshots/img1.png" width="900">
@@ -28,6 +22,9 @@
   <img src="screenshots/img2.png" width="900">
 </p>
 
+<p align="center">
+  <img src="screenshots/img3.png" width="900">
+</p>
 ---
 
 ## ✨ Features
